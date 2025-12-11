@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: fashion-scraper
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 10000
