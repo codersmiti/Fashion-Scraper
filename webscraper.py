@@ -391,7 +391,11 @@ def is_valid_size_token(token: str) -> bool:
 def extract_raw_product_data(url: str):
     with sync_playwright() as p:
         iphone = p.devices["iPhone 13"]
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(
+            headless=True,
+            args=["--no-sandbox", "--disable-dev-shm-usage"]
+        )
+
 
         page = browser.new_page(
             user_agent=iphone["user_agent"],

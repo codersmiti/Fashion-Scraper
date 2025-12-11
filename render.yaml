@@ -1,9 +1,9 @@
 services:
   - type: web
     name: fashion-scraper
-    env: docker
-    plan: free
-    dockerfilePath: ./Dockerfile
+    runtime: python
+    buildCommand: "./render-build.sh"
+    startCommand: "uvicorn server:app --host 0.0.0.0 --port 10000"
     envVars:
-      - key: PORT
-        value: 10000
+      PYTHON_VERSION: 3.12
+      GEMINI_API_KEY: AIzaSyBF8DdsVhZLdkTsdVW7dnPHlJV1Fy9M8AA
